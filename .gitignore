@@ -1,0 +1,50 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!example.tfvars
+terraform/zip/
+
+# Lambda layer source (keep only the zip)
+layers/layer/
+
+# Generated files
+output/
+
+# GTFS static files (download from HSL)
+statics/
+
+#statics
+statics/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Claude Code
+.claude/
+
+# Misc
+*.log
+*.tmp
+
+# Duplicate files (cleanup)
+lambda_layer.zip
