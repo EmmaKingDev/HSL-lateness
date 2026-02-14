@@ -220,6 +220,7 @@ data "aws_iam_policy_document" "lambda_stats_permissions" {
     actions = [
       "glue:GetDatabase",
       "glue:GetTable",
+      "glue:GetPartition",
       "glue:GetPartitions"
     ]
     resources = ["*"]

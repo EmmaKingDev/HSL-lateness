@@ -7,6 +7,7 @@ This version reads pre-computed stats from S3 (no AWS credentials needed).
 import streamlit as st
 import requests
 import pandas as pd
+import altair as alt
 from datetime import datetime
 
 # Config
@@ -55,7 +56,19 @@ late_routes = data.get("late_routes", [])
 if late_routes:
     df = pd.DataFrame(late_routes)
     df = df.rename(columns={"route": "route_short_name", "avg_delay_min": "avg_delay_min"})
-    st.bar_chart(df.set_index("route_short_name")["avg_delay_min"], height=500)
+
+    chart = alt.Chart(df).mark_bar().encode(
+        x=alt.X("route_short_name:N",
+                title="Route",
+                axis=alt.Axis(labelAngle=0, labelFontSize=16, titleFontSize=14),
+                sort=alt.EncodingSortField(field="avg_delay_min", order="descending")),
+        y=alt.Y("avg_delay_min:Q",
+                title="Average Delay (minutes)",
+                axis=alt.Axis(labelFontSize=14, titleFontSize=14)),
+        tooltip=["route_short_name", "avg_delay_min"]
+    ).properties(height=500)
+
+    st.altair_chart(chart, use_container_width=True)
     st.caption(f"{len(late_routes)} routes averaging more than 5 minutes late")
 else:
     st.success("No routes averaging more than 5 minutes late!")
