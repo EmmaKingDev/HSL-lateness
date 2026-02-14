@@ -1,0 +1,25 @@
+{
+  "frozen": true,
+  "frozen_message": "This service is paused. Showing historic data from the last collection run.",
+  "generated_at": "2026-02-14T05:02:36.262092",
+  "date": "2026-02-13",
+  "time_range": {
+    "from": "2026-02-13 09:58",
+    "to": "2026-02-14 01:55",
+    "feed_count": 40
+  },
+  "late_routes": [
+    {
+      "route": "719K",
+      "avg_delay_min": 10.7
+    },
+    {
+      "route": "719",
+      "avg_delay_min": 10.1
+    },
+    {
+      "route": "843",
+      "avg_delay_min": 6.1
+    }
+  ]
+}
